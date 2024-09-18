@@ -1,7 +1,7 @@
 @props(['regions'])
 
 <?php
-// dd(request()->query())
+// Gather all current query parameters including new filters
 $queryParams = array_merge(
     request()->query(), 
     [
@@ -20,7 +20,6 @@ $searchArr = array_filter($queryParams, function($value) {
 <div class="max-w-[1596px] w-full flex justify-between items-center">
     <div class="flex justify-center items-start flex-col gap-2">
         <div class="flex justify-start items-center gap-4">
-            <!-- Region Filter -->
             <form method="GET" action="{{ route('real-estate.index') }}"
                 class="max-w-[785px] w-full h-[47px] flex justify-start items-center gap-2">
                 <select name="region" onchange="this.form.submit()">
@@ -36,17 +35,17 @@ $searchArr = array_filter($queryParams, function($value) {
                     <option value="">საფასო კატეგორია</option>
                     @foreach(['50000-100000', '100000-150000', '150000-200000', '200000-250000', '250000-300000',
                     '300000-350000', '350000-400000', '400000-450000', '450000-500000'] as $range)
-                    <option value="{{ $range }}" {{ request('price')===$range ? 'selected' : '' }}>
+                    <option value="{{ $range }}" {{ request('price')==$range ? 'selected' : '' }}>
                         {{ $range }}
                     </option>
                     @endforeach
                 </select>
 
                 <select name="area" onchange="this.form.submit()">
-                    <option>ფართობი</option>
+                    <option value="">ფართობი</option>
                     @foreach(['50000-100000', '100000-150000', '150000-200000', '200000-250000', '250000-300000',
                     '300000-350000', '350000-400000', '400000-450000', '450000-500000'] as $range)
-                    <option value="{{ $range }}" {{ request('area')===$range ? 'selected' : '' }}>
+                    <option value="{{ $range }}" {{ request('area')==$range ? 'selected' : '' }}>
                         {{ $range }}
                     </option>
                     @endforeach
