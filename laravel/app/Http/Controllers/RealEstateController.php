@@ -9,9 +9,7 @@ use Illuminate\Http\Request;
 
 class RealEstateController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $regions = Region::query()->orderBy('id', 'asc')->get();
@@ -82,7 +80,20 @@ class RealEstateController extends Controller
      */
     public function show(string $id)
     {
-        //
+
+        if (!isset($id)) {
+            abort(404, 'Id not founded');
+        }
+
+        $realEstate = RealEstate::query()->with(['city', 'region', 'agent'])->findOrFail($id);
+        if (!isset($realEstate)) {
+            abort(404, 'realEstate not founded');
+        }
+        // dd($realEstate->agent);
+
+        return view('pages.listings.show', [
+            'realEstate' => $realEstate,
+        ]);
     }
 
     /**
@@ -104,8 +115,15 @@ class RealEstateController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(RealEstate $realEstate)
     {
-        //
+
+        if (!isset($realEstate)) {
+            abort(404);
+        }
+
+        $realEstate->delete();
+
+        return redirect()->route('real-estate.index');
     }
 }

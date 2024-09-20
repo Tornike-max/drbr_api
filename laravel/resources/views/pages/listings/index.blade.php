@@ -3,8 +3,10 @@
         <x-filter :regions="$regions" />
         <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-[40px]">
             @foreach ($realEstates as $realEstate)
-            <div class="max-w-sm  border bg-[#FFFFFF] border-[#DBDBDB] rounded-lg shadow ">
-                <img class="rounded-t-lg h-[307px]" src={{$realEstate->image}} alt={{$realEstate->address}} />
+            <div class="max-w-sm border bg-[#FFFFFF] border-[#DBDBDB] rounded-lg shadow ">
+                <a href="{{ route('real-estate.show', $realEstate->id) }}">
+                    <img class="rounded-t-lg h-[307px]" src={{$realEstate->image}} alt={{$realEstate->address}} />
+                </a>
                 <div class="p-5 ">
                     <a href="#">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-[#021526]">{{$realEstate->price}} ₾</h5>
