@@ -81,13 +81,13 @@ $searchArr = array_filter($queryParams, function($value) {
     </div>
 
     <div class="w-[509px] flex justify-end items-center gap-[16px]">
-        <button
+        <a href="{{ route('real-estate.create') }}"
             class="bg-[#F93B1D] text-[#FFFFFF] hover:bg-[#aa3030] w-full rounded-[10px] px-[16px] py-[10px] text-[16px] leading-[19.2px] font-[500]">
             + ლისტინგის დამატება
-        </button>
-        <button
+        </a>
+        <a
             class="bg-transparent text-[#F93B1D] hover:bg-[#F93B1D] hover:text-[#FFFFFF] text-[16px] leading-[19.2px] font-[500] border-[1px] border-[#F93B1D] w-full rounded-[10px] px-[16px] py-[10px]">
             + აგენტის დამატება
-        </button>
+        </a>
     </div>
 </div>

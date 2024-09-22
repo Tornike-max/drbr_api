@@ -64,9 +64,9 @@ class RealEstateController extends Controller
      */
     public function create()
     {
-        //
+        dd('hello');
+        return view('pages.listings.create');
     }
-
     /**
      * Store a newly created resource in storage.
      */
